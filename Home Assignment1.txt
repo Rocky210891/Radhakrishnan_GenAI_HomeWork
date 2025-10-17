@@ -1,0 +1,217 @@
+Assignment 1: A: Provide a user story from your project or sample userstory--> ask to convert into non-functional testcases
+
+Api request:
+
+ user Body:
+{
+  "model": "llama-3.3-70b-versatile",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Convert into non functional testcases into below user story,(Sample User Story)\n Online Banking Login\n Title: Secure Login for Online Banking /n As a registered banking customer,\n I want to securely log in to my online banking account using my username and password,\n So that I can access my account details and perform transactions safely./n- The login page must have fields for username and password.\n- Password must be masked while typing.\n- Login should fail after 3 incorrect attempts and show a relevant error message./n- Successful login should redirect the user to their account dashboard./n- Login must be protected with HTTPS encryption."
+
+    },
+    {
+      "role": "system",
+      "content": "As an AI Assistant give me a non functional testcases"
+    },
+    {
+      "role": "assistant",
+      "content": "only non functionaltest cases with all possible scenarios"
+    }
+  ]
+}
+
+
+Response:
+{
+    "id": "chatcmpl-35af9571-4964-4861-90db-22d275a1f0a3",
+    "object": "chat.completion",
+    "created": 1760459765,
+    "model": "llama-3.3-70b-versatile",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " \n\n**Performance Test Cases:**\n\n1. **Login Response Time**: Measure the time taken for the login page to load and respond to user input.\n2. **Transaction Processing Time**: Measure the time taken to process a transaction after a successful login.\n3. **System Uptime**: Verify that the online banking system is available and accessible 24/7.\n\n**Security Test Cases:**\n\n1. **Data Encryption**: Verify that all communication between the client and server is encrypted using HTTPS.\n2. **Password Protection**: Verify that passwords are stored securely and not stored in plain text.\n3. **Secure Session Management**: Verify that session IDs are generated randomly and expire after a reasonable period.\n4. **SQL Injection Protection**: Verify that the system is protected against SQL injection attacks.\n5. **Cross-Site Scripting (XSS) Protection**: Verify that the system is protected against XSS attacks.\n\n**Usability Test Cases:**\n\n1. **User Interface**: Verify that the login page is user-friendly and easy to navigate.\n2. **Error Messages**: Verify that error messages are clear and concise.\n3. **Accessibility**: Verify that the system is accessible on different devices and browsers.\n4. **Feedback Mechanism**: Verify that the system provides feedback to the user after a successful or unsuccessful login attempt.\n\n**Scalability Test Cases:**\n\n1. **Concurrent User Support**: Verify that the system can handle a large number of concurrent users.\n2. **Load Testing**: Verify that the system can handle a high volume of transactions.\n3. **Data Storage**: Verify that the system can handle a large amount of data storage.\n\n**Compatibility Test Cases:**\n\n1. **Browser Compatibility**: Verify that the system is compatible with different browsers (e.g. Chrome, Firefox, Safari).\n2. **Device Compatibility**: Verify that the system is compatible with different devices (e.g. desktop, laptop, mobile).\n3. **Operating System Compatibility**: Verify that the system is compatible with different operating systems (e.g. Windows, macOS, Linux).\n\n**Reliability Test Cases:**\n\n1. **System Availability**: Verify that the system is available and accessible 24/7.\n2. **Error Rate**: Verify that the system has a low error rate.\n3. **Recovery Time**: Verify that the system can recover quickly from failures or errors.\n\n**Maintainability Test Cases:**\n\n1. **Code Quality**: Verify that the code is maintainable, readable, and follows best practices.\n2. **Upgrade Process**: Verify that the system can be upgraded easily and without downtime.\n3. **Backup and Recovery**: Verify that the system has a robust backup and recovery process."
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.048542068,
+        "prompt_tokens": 179,
+        "prompt_time": 0.009621952,
+        "completion_tokens": 539,
+        "completion_time": 1.1407578090000001,
+        "total_tokens": 718,
+        "total_time": 1.150379761
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_155ab82e98",
+    "x_groq": {
+        "id": "req_01k7hs8cngepf861w3smxckah6"
+    },
+    "service_tier": "on_demand"
+}
+
+
+AI Response:
+Here’s a clean and structured conversion of the JSON payload you provided into a readable format, focusing on the **test case content** extracted from the assistant’s message:
+
+---
+
+## ✅ Test Case Categories for Online Banking System
+
+### 🚀 Performance Test Cases
+- **Login Response Time**: Measure time for login page to load and respond.
+- **Transaction Processing Time**: Measure time to process a transaction post-login.
+- **System Uptime**: Ensure 24/7 availability of the banking system.
+
+### 🔐 Security Test Cases
+- **Data Encryption**: Confirm HTTPS is used for all client-server communication.
+- **Password Protection**: Ensure passwords are securely stored (not in plain text).
+- **Secure Session Management**: Validate random session ID generation and timely expiration.
+- **SQL Injection Protection**: Test for resistance against SQL injection attacks.
+- **XSS Protection**: Test for protection against cross-site scripting vulnerabilities.
+
+### 🎯 Usability Test Cases
+- **User Interface**: Check for intuitive and navigable login page.
+- **Error Messages**: Ensure clarity and helpfulness of error messages.
+- **Accessibility**: Confirm compatibility across devices and browsers.
+- **Feedback Mechanism**: Validate user feedback after login attempts.
+
+### 📈 Scalability Test Cases
+- **Concurrent User Support**: Test system performance under high user load.
+- **Load Testing**: Simulate high transaction volumes.
+- **Data Storage**: Ensure system can handle large data volumes.
+
+### 🌐 Compatibility Test Cases
+- **Browser Compatibility**: Test across Chrome, Firefox, Safari, etc.
+- **Device Compatibility**: Validate on desktop, laptop, and mobile.
+- **OS Compatibility**: Confirm support for Windows, macOS, Linux.
+
+### 🔁 Reliability Test Cases
+- **System Availability**: Ensure consistent 24/7 access.
+- **Error Rate**: Monitor and minimize system errors.
+- **Recovery Time**: Test system recovery speed after failures.
+
+### 🛠️ Maintainability Test Cases
+- **Code Quality**: Ensure readable, maintainable code following best practices.
+- **Upgrade Process**: Validate smooth upgrade without downtime.
+- **Backup and Recovery**: Confirm robust backup and recovery mechanisms.
+
+---
+
+Let me know if you’d like this formatted as a checklist, test plan document, or spreadsheet-ready table!
+
+
+b) Confirmation of the audio (recorded content of your voice) converted into correct text
+
+( sample audio available in https://getsamplefiles.com/sample-audio-files/opus#google_vignette)
+
+Api Request:
+
+URL: https://api.groq.com/openai/v1/audio/transcriptions
+
+{
+  "model": "whisper-large-v3",
+  "messages": [
+    {
+      "role": "user",
+      "content": "As an Voice Assistant convert audio into text",
+      "model":"audio",
+      "prompt":"text"
+    },   
+   
+    {
+      "role": "system",
+      "content": "As an AI Assistant give me a audio into text with english"
+    }
+    
+  ]
+}
+
+
+Response:
+
+{
+    "text": " Record this audio. Record this audio. Record this audio.",
+    "x_groq": {
+        "id": "req_01k7r0aftefrnbejvsrmmqhnhh"
+    }
+}
+
+c) Provide captcha (OCR images) as base64 string from different site --> confirm their text
+
+Note: Test all these with different models. Check which one is providing better output
+
+Api Request:
+
+api url: https://api.groq.com/openai/v1/chat/completions
+
+Request:
+
+{
+  "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+  "messages": [
+    {
+      "role": "user",
+      "content": [
+        {
+          "type": "text",
+          "text": "Extract the text from this image and let the upper or lower cases stay as it is. Return only those characters"
+        },
+        {
+          "type": "image_url",
+          "image_url": { 
+            "url": "https://shifu.hotstarext.com/SOURCE/VOD/cd-2025-08-29/PKLEveryday_Web-025dd6fe-6750-407c-a170-826fd089bed0.jpg" 
+          },
+         "temperature": 0.1
+        }
+      ]
+    }
+   
+  ],
+  "max_tokens": 500
+}
+
+
+Response:
+
+{
+    "id": "chatcmpl-fd4ef443-d5a0-4f09-9269-e1b1f5303b2a",
+    "object": "chat.completion",
+    "created": 1760461834,
+    "model": "meta-llama/llama-4-scout-17b-16e-instruct",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": "PRO KABADDI LEAGUE \nEVERY DAY \n7:30PM ONWARDS"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.126015727,
+        "prompt_tokens": 2356,
+        "prompt_time": 0.081267932,
+        "completion_tokens": 21,
+        "completion_time": 0.058099706,
+        "total_tokens": 2377,
+        "total_time": 0.139367638
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_79da0e0073",
+    "x_groq": {
+        "id": "req_01k7hv7hzrf2k9htkf0rvhy6s6"
+    },
+    "service_tier": "on_demand"
+}
+
+
