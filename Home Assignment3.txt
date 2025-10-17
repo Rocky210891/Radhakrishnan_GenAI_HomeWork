@@ -1,0 +1,201 @@
+Homework Assignment 3 & 4:
+
+Generate test data for credit card applications for different types of cards and conditions
+
+Use ICE POT framework
+
+Instructions:
+
+Generate Test data for credit card application with different types of cards
+
+Context/Background (System Prompt)
+
+- Role of AI Assistant:
+The assistant is expected to act as a collaborative technical partner, capable of generating structured test data, validating business logic, and producing code snippets aligned with the frontend tech stack.
+- Domain:
+Banking and financial services, specifically credit card issuance workflows.
+- High-Level Expectations:
+- Generate test data that reflects real-world scenarios across multiple card types.
+- Ensure coverage of edge cases (e.g., underage applicants, low credit scores, missing income).
+- Maintain consistency with IDSC First Bank’s application standards and eligibility rules.
+- Output should be usable directly in frontend components or mock API responses.
+
+Examples:
+
+Use IDSC First Bank as the reference institution. Include card types such as:
+- Platinum
+- Gold
+- Silver
+- Student
+- Business
+Simulate conditions like:
+- Age eligibility
+- Employment status
+- Income brackets
+- Credit score ranges
+- Existing customer flag
+
+Persona
+
+- Act as Senior test case developer
+
+Output Format
+
+ - Use JSON for raw test data
+
+Tone:
+
+use polite tone for test case creation
+Ensure clarity and readability for cross-functional teams (QA, Dev, BA)
+
+
+Request Body:
+{
+  "model": "llama-3.3-70b-versatile",
+  "messages": [
+    {
+      "role": "user",
+      "content": "Instructions:\n\nGenerate test data for credit card application with different types of cards\n\nContext/Background:\n- Role of AI Assistant: collaborative technical partner for structured test data, business logic validation, and frontend-aligned code snippets\n- Domain: Banking and financial services, specifically credit card issuance workflows\n- High-Level Expectations:\n  - Generate test data reflecting real-world scenarios across multiple card types\n  - Ensure coverage of edge cases (e.g., underage applicants, low credit scores, missing income)\n  - Maintain consistency with IDSC First Bank’s application standards and eligibility rules\n  - Output should be usable directly in frontend components or mock API responses\n\nExamples:\nUse IDSC First Bank as the reference institution. Include card types such as:\n- Platinum\n- Gold\n- Silver\n- Student\n- Business\n\nSimulate conditions like:\n- Age eligibility\n- Employment status\n- Income brackets\n- Credit score ranges\n- Existing customer flag\n\nPersona:\n- Act as Senior test case developer\n\nOutput Format:\n- Use JSON for raw test data\n\nTone:\n- Use polite tone for test case creation\n- Ensure clarity and readability for cross-functional teams (QA, Dev, BA)"
+    },
+    {
+      "role": "system",
+      "content": "As an AI Assistant, generate structured JSON test data for credit card applications"
+    },
+    {
+      "role": "assistant",
+      "content": "Only JSON test data should be displayed, formatted clearly for frontend or mock API use"
+    }
+  ]
+}
+
+Response:
+
+{
+    "id": "chatcmpl-0c38d883-30ee-4bc5-802e-67767013e3d7",
+    "object": "chat.completion",
+    "created": 1760694282,
+    "model": "llama-3.3-70b-versatile",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": ". Here is an adjusted version:\n\n\n```json\n{\n  \"creditCardApplications\": [\n    {\n      \"cardType\": \"Platinum\",\n      \"applicantName\": \"John Doe\",\n      \"age\": 35,\n      \"employmentStatus\": \"Employed\",\n      \"income\": 120000,\n      \"creditScore\": 750,\n      \"existingCustomer\": true\n    },\n    {\n      \"cardType\": \"Gold\",\n      \"applicantName\": \"Jane Smith\",\n      \"age\": 28,\n      \"employmentStatus\": \"Employed\",\n      \"income\": 90000,\n      \"creditScore\": 680,\n      \"existingCustomer\": false\n    },\n    {\n      \"cardType\": \"Silver\",\n      \"applicantName\": \"Bob Johnson\",\n      \"age\": 42,\n      \"employmentStatus\": \"Self-Employed\",\n      \"income\": 60000,\n      \"creditScore\": 620,\n      \"existingCustomer\": true\n    },\n    {\n      \"cardType\": \"Student\",\n      \"applicantName\": \"Alice Brown\",\n      \"age\": 20,\n      \"employmentStatus\": \"Student\",\n      \"income\": 20000,\n      \"creditScore\": 500,\n      \"existingCustomer\": false\n    },\n    {\n      \"cardType\": \"Business\",\n      \"applicantName\": \"Mike Davis\",\n      \"age\": 38,\n      \"employmentStatus\": \"Business Owner\",\n      \"income\": 150000,\n      \"creditScore\": 800,\n      \"existingCustomer\": true\n    },\n    {\n      \"cardType\": \"Platinum\",\n      \"applicantName\": \"Emily Chen\",\n      \"age\": 25,\n      \"employmentStatus\": \"Unemployed\",\n      \"income\": 0,\n      \"creditScore\": 400,\n      \"existingCustomer\": false\n    },\n    {\n      \"cardType\": \"Gold\",\n      \"applicantName\": \"David Lee\",\n      \"age\": 30,\n      \"employmentStatus\": \"Employed\",\n      \"income\": 80000,\n      \"creditScore\": 580,\n      \"existingCustomer\": true\n    },\n    {\n      \"cardType\": \"Silver\",\n      \"applicantName\": \"Sarah Taylor\",\n      \"age\": 45,\n      \"employmentStatus\": \"Retired\",\n      \"income\": 40000,\n      \"creditScore\": 700,\n      \"existingCustomer\": true\n    },\n    {\n      \"cardType\": \"Student\",\n      \"applicantName\": \"Kevin White\",\n      \"age\": 22,\n      \"employmentStatus\": \"Part-Time\",\n      \"income\": 30000,\n      \"creditScore\": 550,\n      \"existingCustomer\": false\n    },\n    {\n      \"cardType\": \"Business\",\n      \"applicantName\": \"Olivia Martin\",\n      \"age\": 40,\n      \"employmentStatus\": \"Business Owner\",\n      \"income\": 200000,\n      \"creditScore\": 850,\n      \"existingCustomer\": true\n    }\n  ]\n}\n```"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.049549674,
+        "prompt_tokens": 303,
+        "prompt_time": 0.027114016,
+        "completion_tokens": 626,
+        "completion_time": 1.117857593,
+        "total_tokens": 929,
+        "total_time": 1.144971609
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_34d416ee39",
+    "x_groq": {
+        "id": "req_01k7rrx94begmtnygfjj3fmy6e"
+    },
+    "service_tier": "on_demand"
+}
+
+Convert the Api response into LLM:
+
+{
+  "creditCardApplications": [
+    {
+      "cardType": "Platinum",
+      "applicantName": "John Doe",
+      "age": 35,
+      "employmentStatus": "Employed",
+      "income": 120000,
+      "creditScore": 750,
+      "existingCustomer": true
+    },
+    {
+      "cardType": "Gold",
+      "applicantName": "Jane Smith",
+      "age": 28,
+      "employmentStatus": "Employed",
+      "income": 90000,
+      "creditScore": 680,
+      "existingCustomer": false
+    },
+    {
+      "cardType": "Silver",
+      "applicantName": "Bob Johnson",
+      "age": 42,
+      "employmentStatus": "Self-Employed",
+      "income": 60000,
+      "creditScore": 620,
+      "existingCustomer": true
+    },
+    {
+      "cardType": "Student",
+      "applicantName": "Alice Brown",
+      "age": 20,
+      "employmentStatus": "Student",
+      "income": 20000,
+      "creditScore": 500,
+      "existingCustomer": false
+    },
+    {
+      "cardType": "Business",
+      "applicantName": "Mike Davis",
+      "age": 38,
+      "employmentStatus": "Business Owner",
+      "income": 150000,
+      "creditScore": 800,
+      "existingCustomer": true
+    },
+    {
+      "cardType": "Platinum",
+      "applicantName": "Emily Chen",
+      "age": 25,
+      "employmentStatus": "Unemployed",
+      "income": 0,
+      "creditScore": 400,
+      "existingCustomer": false
+    },
+    {
+      "cardType": "Gold",
+      "applicantName": "David Lee",
+      "age": 30,
+      "employmentStatus": "Employed",
+      "income": 80000,
+      "creditScore": 580,
+      "existingCustomer": true
+    },
+    {
+      "cardType": "Silver",
+      "applicantName": "Sarah Taylor",
+      "age": 45,
+      "employmentStatus": "Retired",
+      "income": 40000,
+      "creditScore": 700,
+      "existingCustomer": true
+    },
+    {
+      "cardType": "Student",
+      "applicantName": "Kevin White",
+      "age": 22,
+      "employmentStatus": "Part-Time",
+      "income": 30000,
+      "creditScore": 550,
+      "existingCustomer": false
+    },
+    {
+      "cardType": "Business",
+      "applicantName": "Olivia Martin",
+      "age": 40,
+      "employmentStatus": "Business Owner",
+      "income": 200000,
+      "creditScore": 850,
+      "existingCustomer": true
+    }
+  ]
+}
