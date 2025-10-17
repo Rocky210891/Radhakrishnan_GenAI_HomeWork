@@ -1,0 +1,126 @@
+Take one of your office/retail application DOM structure,convert into selenium /playwright / cypress code 
+- You are going to write prompt to convert selenium to playwright typescript	
+- Once you convert, you need to copy to this URL and run !
+
+
+Generate Selenium test cases for Redbus search:
+
+Instructions
+1. use DOM to generate selenium Java code
+2. Type "Coimbatore" into delivery location
+3. do not use wait.until
+4.include both positive and negative test cases
+
+
+Context
+URL:https://www.redbus.com/
+
+input Dom: <div id="search-div"><div class="search-wrapper"><div class="source input-box "><label class="lbl" for="src">source</label><div class="input-area"><img class="dest-img" src="../../../images/Location Copy.svg"><div class="textboxes fl textarea"><input placeholder="Ex: Paris" type="text" id="src" class="sc-jlyJG kxRJeL" data-id="141" autocomplete="off" value="Coimbatore, Tamil Nadu, India"></div></div></div><div class="toggle" style="transform: rotate(0deg); transition: 0.2s linear;"><img src="../../../images/toggle.svg"></div><div class="destination input-box"><label class="lbl" for="dest">destination</label><div class="input-area"><img class="dest-img" src="../../../images/Location Copy.svg"><div class="textboxes fl textarea"><input placeholder="Ex: London Airport" type="text" id="dest" class="sc-jlyJG kxRJeL" data-id="123" autocomplete="off" value="Chennai, Tamil Nadu, India"></div></div></div><div class="grey-vertical"></div><div class="date input-box " id="date-box"><label class="lbl" for="date"> date</label><div class="input-area"><input id="onward_cal" type="text" class="rdc-db" data-message="Please enter a date" autocomplete="off" placeholder="DD/MY" readonly="" value="17-Oct-2025"></div></div><div class="grey-vertical"></div><div class="returndate input-box " id="return-box"><label class="lbl" for="r-date">return  date</label><div class="input-area"><input type="text" class="rdc-db" id="r-date" autocomplete="off" placeholder="Optional" readonly="" value="13-Oct-2025"></div></div><img class="close-button" src="../../../images/close.svg"></div><button id="search_butn" class="fl button"><div class="search-lbl">SEARCH</div></button></div>
+
+Example: sample selenium test case
+
+package test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.List;
+
+public class SecondTest {
+
+    public static void main(String[] args) {
+        // Set path to ChromeDriver executable
+        //System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
+
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            // 1. Open Blinkit
+            driver.get("https://www.redbus.com/");
+            driver.manage().window().maximize();
+
+Persona:
+
+Being a automation tester my test case should cover all sceanrios
+
+Output:
+
+Java selenium code
+
+Result:
+
+package test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+/**
+ * Test class for validating delivery location input on RedBus.com.
+ * Covers both positive and negative scenarios using DOM-based locators.
+ */
+public class RedBusDeliveryLocationTest {
+
+    private WebDriver driver;
+
+    /**
+     * Setup method to initialize WebDriver and open RedBus homepage.
+     */
+    @BeforeClass
+    public void setUp() {
+        driver = new ChromeDriver();
+        driver.get("https://www.redbus.com/");
+        driver.manage().window().maximize();
+    }
+
+    /**
+     * Positive test case: Enter valid delivery location "Coimbatore".
+     */
+    @Test(priority = 1)
+    public void testValidDeliveryLocation() {
+        WebElement sourceInput = driver.findElement(By.id("src"));
+        sourceInput.clear();
+        sourceInput.sendKeys("Coimbatore");
+
+        WebElement searchButton = driver.findElement(By.id("search_butn"));
+        searchButton.click();
+
+        // Validate that the input was accepted (basic check)
+        String enteredValue = driver.findElement(By.id("src")).getAttribute("value");
+        Assert.assertTrue(enteredValue.contains("Coimbatore"), "Valid location should be accepted");
+    }
+
+    /**
+     * Negative test case: Enter invalid delivery location "123@@@".
+     */
+    @Test(priority = 2)
+    public void testInvalidDeliveryLocation() {
+        WebElement sourceInput = driver.findElement(By.id("src"));
+        sourceInput.clear();
+        sourceInput.sendKeys("123@@@");
+
+        WebElement searchButton = driver.findElement(By.id("search_butn"));
+        searchButton.click();
+
+        // Validate that the input is not accepted or triggers validation
+        String enteredValue = driver.findElement(By.id("src")).getAttribute("value");
+        Assert.assertFalse(enteredValue.equals("123@@@"), "Invalid location should not be accepted");
+    }
+
+    /**
+     * Cleanup method to close the browser after tests.
+     */
+    @AfterClass
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+
+
+

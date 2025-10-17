@@ -1,0 +1,183 @@
+Take one of your office/retail application DOM structure,convert into selenium /playwright / cypress code 
+- You are going to write prompt to convert selenium to playwright typescript	
+- Once you convert, you need to copy to this URL and run !
+
+
+Convert Selenium Redbus test case into Playwright:
+
+
+
+Instructions
+
+Use Playwright v1.56+ syntax and best practices for TypeScript
+Keep all original test steps exactly and do not modify existing steps
+Use locators in selenium java code such as css
+Do not use thread.sleep instead use explicit and implicit wait
+Insert comments as per steps
+Include proper comments for playwright typescript
+Output must be valid AI typescript
+Keep timeout as 30 seconds
+
+
+Context
+URL:https://www.redbus.com/
+You are an AI assistant specialized in test automation migration
+Your task is to translate Selenium Java code into Playwright Typescript code
+
+
+Example: sample selenium test case
+package test;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+/**
+ * Test class for validating delivery location input on RedBus.com.
+ * Covers both positive and negative scenarios using DOM-based locators.
+ */
+public class RedBusDeliveryLocationTest {
+
+    private WebDriver driver;
+
+    /**
+     * Setup method to initialize WebDriver and open RedBus homepage.
+     */
+    @BeforeClass
+    public void setUp() {
+        driver = new ChromeDriver();
+        driver.get("https://www.redbus.com/");
+        driver.manage().window().maximize();
+    }
+
+    /**
+     * Positive test case: Enter valid delivery location "Coimbatore".
+     */
+    @Test(priority = 1)
+    public void testValidDeliveryLocation() {
+        WebElement sourceInput = driver.findElement(By.id("src"));
+        sourceInput.clear();
+        sourceInput.sendKeys("Coimbatore");
+
+        WebElement searchButton = driver.findElement(By.id("search_butn"));
+        searchButton.click();
+
+        // Validate that the input was accepted (basic check)
+        String enteredValue = driver.findElement(By.id("src")).getAttribute("value");
+        Assert.assertTrue(enteredValue.contains("Coimbatore"), "Valid location should be accepted");
+    }
+
+    /**
+     * Negative test case: Enter invalid delivery location "123@@@".
+     */
+    @Test(priority = 2)
+    public void testInvalidDeliveryLocation() {
+        WebElement sourceInput = driver.findElement(By.id("src"));
+        sourceInput.clear();
+        sourceInput.sendKeys("123@@@");
+
+        WebElement searchButton = driver.findElement(By.id("search_butn"));
+        searchButton.click();
+
+        // Validate that the input is not accepted or triggers validation
+        String enteredValue = driver.findElement(By.id("src")).getAttribute("value");
+        Assert.assertFalse(enteredValue.equals("123@@@"), "Invalid location should not be accepted");
+    }
+
+    /**
+     * Cleanup method to close the browser after tests.
+     */
+    @AfterClass
+    public void tearDown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+}
+
+
+Playwright Typescript code equivalent of above Java selenium code
+
+ Playwright code
+
+test('get started link', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Click the get started link.
+  await page.getByRole('link', { name: 'Get started' }).click();
+
+  // Expects page to have a heading with the name of Installation.
+  await expect(page.getByRole('heading', { name: 'Installation' })).toBeVisible();
+});
+
+
+Output:
+
+Playwright test script
+
+Result:
+
+import { test, expect } from '@playwright/test';
+
+/**
+ * Test suite for validating delivery location input on RedBus.com.
+ * Includes both positive and negative test cases using Playwright best practices.
+ */
+test.describe('RedBus Delivery Location Tests', () => {
+  test.beforeEach(async ({ page }) => {
+    // Navigate to RedBus homepage
+    await page.goto('https://www.redbus.com/', { timeout: 30000 });
+    await page.waitForLoadState('domcontentloaded');
+  });
+
+  /**
+   * Positive test case: Enter valid delivery location "Coimbatore"
+   */
+  test('should accept valid delivery location Coimbatore', async ({ page }) => {
+    // Locate source input field by ID and clear it
+    const sourceInput = page.locator('#src');
+    await sourceInput.waitFor({ state: 'visible', timeout: 30000 });
+    await sourceInput.fill('');
+
+    // Type "Coimbatore" into the source input
+    await sourceInput.type('Coimbatore');
+
+    // Click the search button
+    const searchButton = page.locator('#search_butn');
+    await searchButton.waitFor({ state: 'visible', timeout: 30000 });
+    await searchButton.click();
+
+    // Validate that the input was accepted
+    const enteredValue = await sourceInput.inputValue();
+    expect(enteredValue).toContain('Coimbatore');
+  });
+
+  /**
+   * Negative test case: Enter invalid delivery location "123@@@"
+   */
+  test('should reject invalid delivery location 123@@@', async ({ page }) => {
+    // Locate source input field by ID and clear it
+    const sourceInput = page.locator('#src');
+    await sourceInput.waitFor({ state: 'visible', timeout: 30000 });
+    await sourceInput.fill('');
+
+    // Type "123@@@" into the source input
+    await sourceInput.type('123@@@');
+
+    // Click the search button
+    const searchButton = page.locator('#search_butn');
+    await searchButton.waitFor({ state: 'visible', timeout: 30000 });
+    await searchButton.click();
+
+    // Validate that the input is not accepted or triggers validation
+    const enteredValue = await sourceInput.inputValue();
+    expect(enteredValue).not.toBe('123@@@');
+  });
+});
+
+
+Run the playwright code into https://try.playwright.tech/?l=playwright-test
+
