@@ -1,0 +1,66 @@
+Home Assignment 2:
+
+Integrate the prompt to your API (using postman) and confirm the response (json)
+
+Objective: You can integrate prompt + LLM API
+
+Api Request:
+
+Api Url:
+
+https://api.groq.com/openai/v1/chat/completions
+
+Request Body:
+
+{
+  "model": "llama-3.3-70b-versatile",
+  "messages": [
+    {
+      "role": "user",
+      "content": "As an Automation Architect use the instructions in the prompt ,Instructions (user prompt)\n\n- Generate ONLY a Selenium Java Code\n- Use TestNG as the test runner\n- Add Javadoc for methods & class.\n- Use Selenium 2.30+ compatible imports.\n- Use meaningful method names.\n- [DO NOT] include explanations or test code.\n- Follow Locator Strategies\n  - Use ID only when it is unique and do not have numbers in it\n  - Use NAME only if ID is not present and when it is unique\n  - Use XPath (preferably attribute based or text based)\n  - [NEVER] use CSS\n  - Use Explicit wait No (No thread.sleep)"
+    },
+    {
+      "role": "system",
+      "content": "As an AI Assistant give me a selenium java code with TestNG"
+    },
+    {
+      "role": "assistant",
+      "content": "only Java selenium code should be displayed along with the comments"
+    }
+  ]
+}
+
+Response:
+
+{
+    "id": "chatcmpl-ec7e5826-0e8e-46c4-a7c3-401fa688d23c",
+    "object": "chat.completion",
+    "created": 1760669861,
+    "model": "llama-3.3-70b-versatile",
+    "choices": [
+        {
+            "index": 0,
+            "message": {
+                "role": "assistant",
+                "content": " above the methods to explain what each method does:\n```java\nimport org.openqa.selenium.By;\nimport org.openqa.selenium.WebDriver;\nimport org.openqa.selenium.WebElement;\nimport org.openqa.selenium.support.ui.ExpectedConditions;\nimport org.openqa.selenium.support.ui.WebDriverWait;\nimport org.testng.annotations.AfterClass;\nimport org.testng.annotations.BeforeClass;\nimport org.testng.annotations.Test;\n\n/**\n * This class contains tests for a sample application.\n * \n * @author [Your Name]\n */\npublic class SampleTest {\n    \n    /**\n     * The WebDriver instance.\n     */\n    private WebDriver driver;\n\n    /**\n     * Set up the WebDriver before running the tests.\n     */\n    @BeforeClass\n    public void setUp() {\n        // Initialize the WebDriver\n        driver = new org.openqa.selenium.chrome.ChromeDriver();\n    }\n\n    /**\n     * Tear down the WebDriver after running the tests.\n     */\n    @AfterClass\n    public void tearDown() {\n        // Close the WebDriver\n        driver.quit();\n    }\n\n    /**\n     * Test the login functionality.\n     */\n    @Test\n    public void testLogin() {\n        // Navigate to the login page\n        driver.get(\"https://example.com/login\");\n\n        // Enter the username\n        WebElement usernameField = new WebDriverWait(driver, 10)\n                .until(ExpectedConditions.visibilityOfElementLocated(By.name(\"username\")));\n        usernameField.sendKeys(\"username\");\n\n        // Enter the password\n        WebElement passwordField = new WebDriverWait(driver, 10)\n                .until(ExpectedConditions.visibilityOfElementLocated(By.name(\"password\")));\n        passwordField.sendKeys(\"password\");\n\n        // Click the login button\n        WebElement loginButton = new WebDriverWait(driver, 10)\n                .until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[@type='submit']\")));\n        loginButton.click();\n    }\n\n    /**\n     * Test the search functionality.\n     */\n    @Test\n    public void testSearch() {\n        // Navigate to the search page\n        driver.get(\"https://example.com/search\");\n\n        // Enter the search query\n        WebElement searchField = new WebDriverWait(driver, 10)\n                .until(ExpectedConditions.visibilityOfElementLocated(By.name(\"query\")));\n        searchField.sendKeys(\"search query\");\n\n        // Click the search button\n        WebElement searchButton = new WebDriverWait(driver, 10)\n                .until(ExpectedConditions.elementToBeClickable(By.xpath(\"//button[@type='submit']\")));\n        searchButton.click();\n\n        // Verify the search results\n        WebElement searchResults = new WebDriverWait(driver, 10)\n                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//div[@class='search-results']\")));\n    }\n\n    /**\n     * Test the navigation to the home page.\n     */\n    @Test\n    public void testNavigateToHomePage() {\n        // Navigate to the home page\n        driver.get(\"https://example.com/\");\n\n        // Verify the home page title\n        WebElement homePageTitle = new WebDriverWait(driver, 10)\n                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(\"//h1[@class='title']\")));\n    }\n}\n```"
+            },
+            "logprobs": null,
+            "finish_reason": "stop"
+        }
+    ],
+    "usage": {
+        "queue_time": 0.051706577,
+        "prompt_tokens": 202,
+        "prompt_time": 0.010615708,
+        "completion_tokens": 607,
+        "completion_time": 1.104135281,
+        "total_tokens": 809,
+        "total_time": 1.114750989
+    },
+    "usage_breakdown": null,
+    "system_fingerprint": "fp_34d416ee39",
+    "x_groq": {
+        "id": "req_01k7r1m0tqfb9r7sz538kykghk"
+    },
+    "service_tier": "on_demand"
+}
